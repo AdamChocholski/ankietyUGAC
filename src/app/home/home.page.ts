@@ -49,6 +49,10 @@ export class HomePage {
     this.sliderAnkieta.slideNext();
   }
 
+  moveToPreviousSlide(){
+    this.sliderAnkieta.slidePrev();
+  }
+
   async beforeSlideChange() {
     if (this.surveyCode == null || this.surveyCode < 100000) {
       this.sliderAnkieta.slideTo(0);
