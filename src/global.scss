@@ -24,3 +24,56 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+    --border-radius: 40px;
+    .button { 
+        --opacity: 0.9; 
+    }
+    .ion-color-favorite {
+        --ion-color-base: var(--ion-color-favorite);
+        --ion-color-base-rgb: var(--ion-color-favorite-rgb);
+        --ion-color-contrast: var(--ion-color-favorite-contrast);
+        --ion-color-contrast-rgb: var(--ion-color-favorite-contrast-rgb);
+        --ion-color-shade: var(--ion-color-favorite-shade);
+        --ion-color-tint: var(--ion-color-favorite-tint);
+    }
+    
+}
+
+
+
+.md {
+    --ion-background-color: #85796a; 
+    --ion-color-primary: #6E5A59;
+    --ion-color-secondary: #ccbfad;
+    --ion-text-color: #ffffff;
+    ion-item {
+        --ion-background-color: #FBF8F4;
+        color: black;
+        border-radius: 10px;
+        margin-top: 8px;
+    }
+    ion-title {
+        color: white;
+    }
+}
+  
+
+.ios {
+    --ion-background-color: #060d5a; 
+    --ion-color-primary: #0b608a;
+    --ion-color-secondary: #0470aa;
+    --ion-color-primary-rgb: 255, 64, 129;
+    --ion-color-primary-contrast: #c4c6d3; 
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    ion-item {
+        --ion-background-color: #70b2d3ce;
+        color: white;
+        border-radius: 10px;
+        margin-top: 8px;
+    }
+    ion-title {
+        color: white;
+    }
+}

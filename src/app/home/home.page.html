@@ -1,20 +1,144 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      CubbyMate
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content overflow-scroll="false" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">CubbyMate</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-slides #sliderAnkieta (ionSlideWillChange)="beforeSlideChange()"  pager="false">
+      <ion-slide style="display: block;">
+        <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-img src="/assets/lygo.png" style="height: 100px;"></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="text-align: end;">
+              <ion-icon (click)="moveToNextSlide()" name="play-circle" size="large" color="danger"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="showSurveyData()" expand="block" shape="round" color="primary">
+                <ion-icon slot="start" name="search"></ion-icon>
+                 Nowy Raport 
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col> 
+              <ion-button (click)="showSurveyData()" expand="block" shape="round" color="primary">
+              <ion-icon slot="start" name="search"></ion-icon>
+              Raporty
+            </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+
+      <ion-slide style="display: block;">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item class=>
+                <ion-label class="ion-text-wrap">{{questions[0]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label class="ion-text-wrap">{{questions[1]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item class="platform-android">
+                <ion-label class="ion-text-wrap">{{questions[2]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label class="ion-text-wrap">{{questions[3]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label class="ion-text-wrap">{{questions[4]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label class="ion-text-wrap">{{questions[5]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label class="ion-text-wrap">{{questions[6]}}</ion-label>
+                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
+                  <ion-select-option>zdecydowanie nie</ion-select-option>
+                  <ion-select-option>nie</ion-select-option>
+                  <ion-select-option>ani nie / ani tak</ion-select-option>
+                  <ion-select-option>tak</ion-select-option>
+                  <ion-select-option>zdecydowanie tak</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="justify-content-center">
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Uwagi dodatkowe i komentarze</ion-label>
+                <ion-textarea placeholder="Max 140 znaków"></ion-textarea>
+              </ion-item>
+            </ion-col>      
+          </ion-row>
+          <ion-row class="justify-content-center">
+            <ion-col size="12">
+              <ion-button expand="full">Wyślij<ion-icon name="send"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+
+    </ion-slides>
   </div>
 </ion-content>

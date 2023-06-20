@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ToastController, IonSlides, IonSlide, AlertController  } from '@ionic/angular';
+import { ToastController, IonSlides, AlertController  } from '@ionic/angular';
 import * as $ from "jquery";
 
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
