@@ -45,27 +45,12 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-icon (click)="moveToPreviousSlide()" name="play-circle" size="large" color="danger"></ion-icon>
+              <ion-icon (click)="moveToPreviousSlide()" name="arrow-back-circle-outline" size="large"></ion-icon>
             </ion-col>
             <ion-col>
               <ion-img src="/assets/lygo.png" style="height: 100px;"></ion-img>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col size="12">
-              <ion-item>
-                <ion-label class="ion-text-wrap">{{questions[0]}}</ion-label>
-                <ion-select value="brown" okText="Potwierdź" cancelText="Anuluj">
-                  <ion-select-option>zdecydowanie nie</ion-select-option>
-                  <ion-select-option>nie</ion-select-option>
-                  <ion-select-option>ani nie / ani tak</ion-select-option>
-                  <ion-select-option>tak</ion-select-option>
-                  <ion-select-option>zdecydowanie tak</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-
           <ion-row class="justify-content-center">
             <ion-col size="12">
               <ion-item>
@@ -87,13 +72,15 @@
             </ion-col>      
           </ion-row>
           <ion-row class="justify-content-center">
-            <ion-col size="12">
-              <ion-button expand="full">Dodaj<ion-icon name="send"></ion-icon></ion-button>
+            <ion-col>
+              <ion-button>Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button>Dodaj<ion-icon name="send"></ion-icon></ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-slide>
-
     </ion-slides>
   </div>
 </ion-content>
