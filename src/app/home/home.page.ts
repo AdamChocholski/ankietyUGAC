@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ToastController, IonSlides, AlertController  } from '@ionic/angular';
 import * as $ from "jquery";
+import { PhotoService } from '../services/photo.service';
 
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
@@ -38,7 +39,7 @@ export class HomePage {
     '7. Zajęcia realizowane były w przyjaznej i budującej atmosferze.'
   ];
 
-  constructor(private toastController: ToastController, private alertController: AlertController) {}
+  constructor(private toastController: ToastController, private alertController: AlertController, public photoservice: PhotoService) {}
 
   async ngOnInit() {
       const toast = await this.toastController.create({
@@ -113,6 +114,7 @@ export class HomePage {
 
   // import * as $ from "jquery";
   }
+ 
 }
 
 interface SurveyData {
