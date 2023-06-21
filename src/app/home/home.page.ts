@@ -54,7 +54,7 @@ export class HomePage {
     this.sliderAnkieta.slidePrev();
   }
 
-async przydodaniukod() {
+  async przydodaniukod() {
     if (this.NumerPaczki == null || this.NumerPaczki > 100000 || this.NumerPaczki ==0 ) {
       Haptics.vibrate();
       this.sliderAnkieta.slideTo(1);
@@ -68,7 +68,7 @@ async przydodaniukod() {
       await alert.present();
     }
   }
-async przydodaniuinfo() {
+  async przydodaniuinfo() {
     if (this.PaczkaPodstawowe.length == 0) {
       Haptics.vibrate();
       this.sliderAnkieta.slideTo(1);
