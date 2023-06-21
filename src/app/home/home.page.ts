@@ -55,10 +55,6 @@ export class HomePage {
   }
 
 
-    async takePicture() {
-      this.photoservice.takePicture();
-    }
-
     async przydodaniukod() {
       if (this.NumerPaczki == null || this.NumerPaczki > 100000 || this.NumerPaczki ==0 ) {
         Haptics.vibrate();
