@@ -11,7 +11,13 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
 })
 export class HomePage {
   @ViewChild("sliderAnkieta") sliderAnkieta!: IonSlides;
-  surveyCode: number = 100000;
+  paczkaInfo: PaczkaInfo ={
+    infopodst: "",
+    infododatkowe: "",
+    infoUszkodzenia: "",
+  }
+  PaczkaPodstawowe: string = "";
+  NumerPaczki: number = 0;
   surveyData: SurveyData = {
     University: "",
     Discipline: "",
@@ -36,8 +42,8 @@ export class HomePage {
 
   async ngOnInit() {
       const toast = await this.toastController.create({
-        message: 'Proszę wypełnić sumiennie ankietę!',
-        duration: 3000,
+        message: 'Witamy w CubbyMate!',
+        duration: 4000,
         position: 'bottom',
         
       });
@@ -53,13 +59,29 @@ export class HomePage {
     this.sliderAnkieta.slidePrev();
   }
 
-  async beforeSlideChange() {
-    if (this.surveyCode == null || this.surveyCode < 100000) {
-      this.sliderAnkieta.slideTo(0);
+  async przydodaniukod() {
+    if (this.NumerPaczki == null || this.NumerPaczki > 100000 || this.NumerPaczki ==0 ) {
+      Haptics.vibrate();
+      this.sliderAnkieta.slideTo(1);
       
       const alert = await this.alertController.create({
-        header: 'Błędny kod ankiety',
-        message: 'Kod ankiety musi być z przedziału 100000-999999!',
+        header: 'Błędny kod Paczki',
+        message: 'Kod paczki musi być z przedziału 1-99999!',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
+    }
+  }
+  async przydodaniuinfo() {
+    if (this.PaczkaPodstawowe.length == 0) {
+      Haptics.vibrate();
+      this.sliderAnkieta.slideTo(1);
+      
+      
+      const alert = await this.alertController.create({
+        header: 'Błędne Informacje Paczki',
+        message: 'Podaj Informacje podstawowe na temat paczki',
         buttons: ['OK'],
       });
   
@@ -71,7 +93,7 @@ export class HomePage {
     await Haptics.vibrate();
 
     $.ajax({
-      url: `https://surveyug.azurewebsites.net/courses/${this.surveyCode == 253435? 1: 2}`
+      
     }).done((respose: SurveyDataDTO) => {
       this.surveyData = {
         University: respose.university,
@@ -101,6 +123,12 @@ interface SurveyData {
   Subject: string;
   LessonType: string;
   Group: string;
+}
+interface PaczkaInfo{
+  infopodst: string;
+  infododatkowe: string;
+  infoUszkodzenia: string;
+
 }
 
 interface SurveyDataDTO {
