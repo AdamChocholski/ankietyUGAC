@@ -54,7 +54,60 @@ export class HomePage {
     this.sliderAnkieta.slidePrev();
   }
 
+  async przydodaniukod() {
+    if (this.NumerPaczki == null || this.NumerPaczki > 100000 || this.NumerPaczki ==0 ) {
+      Haptics.vibrate();
+      this.sliderAnkieta.slideTo(1);
+      
+      const alert = await this.alertController.create({
+        header: 'Błędny kod Paczki',
+        message: 'Kod paczki musi być z przedziału 1-99999!',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
+    }
+  }
+  async przydodaniuinfo() {
+    if (this.PaczkaPodstawowe.length == 0) {
+      Haptics.vibrate();
+      this.sliderAnkieta.slideTo(1);
+      
+      
+      const alert = await this.alertController.create({
+        header: 'Błędne Informacje Paczki',
+        message: 'Podaj Informacje podstawowe na temat paczki',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
+    }
+  }
 
+  async showSurveyData(){
+    await Haptics.vibrate();
+
+    $.ajax({
+      
+    }).done((respose: SurveyDataDTO) => {
+      this.surveyData = {
+        University: respose.university,
+        Discipline: respose.field,
+        Semester: respose.sem,
+        Instructor: respose.professor,
+        Subject: respose.lecture,
+        LessonType: respose.type,
+        Group: respose.group
+      }
+    }).fail((xhr, status, message) => {
+      alert(message)
+    })
+
+  // npm install jquery --save
+  // npm i --save-dev @types/jquery
+
+  // import * as $ from "jquery";
+  }
  
 }
 
