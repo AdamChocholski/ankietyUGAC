@@ -68,7 +68,7 @@ async przydodaniukod() {
       await alert.present();
     }
   }
-  async przydodaniuinfo() {
+async przydodaniuinfo() {
     if (this.PaczkaPodstawowe.length == 0) {
       Haptics.vibrate();
       this.sliderAnkieta.slideTo(1);
