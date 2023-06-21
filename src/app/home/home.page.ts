@@ -54,9 +54,6 @@ export class HomePage {
     this.sliderAnkieta.slidePrev();
   }
 
-  async beforeSlideChange() {
-  await Haptics.vibrate();
-    }
 
     async takePicture() {
       this.photoservice.takePicture();
