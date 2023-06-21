@@ -19,25 +19,7 @@ export class HomePage {
   }
   PaczkaPodstawowe: string = "";
   NumerPaczki: number = 0;
-  surveyData: SurveyData = {
-    University: "",
-    Discipline: "",
-    Semester: 0,
-    Instructor: "",
-    Subject: "",
-    LessonType: "",
-    Group: ""
-  }
 
-  questions: Array<string> = [
-    '1. Na zajęciach była przekazywana wiedza zarówno teoretyczna jak i praktyczna.',
-    '2. Zajęcia miały precyzyjnie określone założenia i cele.',
-    '3. Zajęcia były prowadzone w sposób jasny i zrozumiały.',
-    '4. Forma zajęć, wykorzystywane ćwiczenia i przykłady angażowały uczestników.',
-    '5. Wykładowca dokonywał syntez i podsumować partii materiału.',
-    '6. Wykładowca potrafił zainteresować słuchaczy omawianym tematem.',
-    '7. Zajęcia realizowane były w przyjaznej i budującej atmosferze.'
-  ];
 
   constructor(private toastController: ToastController, private alertController: AlertController, public photoservice: PhotoService) {}
 
@@ -90,57 +72,15 @@ export class HomePage {
     }
   }
 
-  async showSurveyData(){
-    await Haptics.vibrate();
-
-    $.ajax({
-      
-    }).done((respose: SurveyDataDTO) => {
-      this.surveyData = {
-        University: respose.university,
-        Discipline: respose.field,
-        Semester: respose.sem,
-        Instructor: respose.professor,
-        Subject: respose.lecture,
-        LessonType: respose.type,
-        Group: respose.group
-      }
-    }).fail((xhr, status, message) => {
-      alert(message)
-    })
-
-  }
-
   async takePicture() {
     this.photoservice.takePicture();
   }
  
 }
 
-interface SurveyData {
-  University: string;
-  Discipline: string;
-  Semester: number;
-  Instructor: string;
-  Subject: string;
-  LessonType: string;
-  Group: string;
-}
 interface PaczkaInfo{
   infopodst: string;
   infododatkowe: string;
   infoUszkodzenia: string;
 
-}
-
-interface SurveyDataDTO {
-  id: number,
-  university: string;
-  field: string;
-  sem: number;
-  professor: string;
-  lecture: string;
-  type: string;
-  group: string;
-  code: number
 }
