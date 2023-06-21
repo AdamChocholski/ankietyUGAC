@@ -54,7 +54,7 @@ export class HomePage {
     this.sliderAnkieta.slidePrev();
   }
 
-  async przydodaniukod() {
+async przydodaniukod() {
     if (this.NumerPaczki == null || this.NumerPaczki > 100000 || this.NumerPaczki ==0 ) {
       Haptics.vibrate();
       this.sliderAnkieta.slideTo(1);
@@ -83,9 +83,30 @@ export class HomePage {
       await alert.present();
     }
   }
-  
-  async takePicture() {
-    this.photoservice.takePicture();
+
+  async showSurveyData(){
+    await Haptics.vibrate();
+
+    $.ajax({
+      
+    }).done((respose: SurveyDataDTO) => {
+      this.surveyData = {
+        University: respose.university,
+        Discipline: respose.field,
+        Semester: respose.sem,
+        Instructor: respose.professor,
+        Subject: respose.lecture,
+        LessonType: respose.type,
+        Group: respose.group
+      }
+    }).fail((xhr, status, message) => {
+      alert(message)
+    })
+
+  // npm install jquery --save
+  // npm i --save-dev @types/jquery
+
+  // import * as $ from "jquery";
   }
  
 }
