@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ToastController, IonSlides, AlertController  } from '@ionic/angular';
 import * as $ from "jquery";
+import { PhotoService } from '../services/photo.service';
 
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
@@ -32,7 +33,7 @@ export class HomePage {
     '7. Zajęcia realizowane były w przyjaznej i budującej atmosferze.'
   ];
 
-  constructor(private toastController: ToastController, private alertController: AlertController) {}
+  constructor(private toastController: ToastController, private alertController: AlertController, public photoservice: PhotoService) {}
 
   async ngOnInit() {
       const toast = await this.toastController.create({
@@ -54,43 +55,15 @@ export class HomePage {
   }
 
   async beforeSlideChange() {
-    if (this.surveyCode == null || this.surveyCode < 100000) {
-      this.sliderAnkieta.slideTo(0);
-      
-      const alert = await this.alertController.create({
-        header: 'Błędny kod ankiety',
-        message: 'Kod ankiety musi być z przedziału 100000-999999!',
-        buttons: ['OK'],
-      });
-  
-      await alert.present();
+  await Haptics.vibrate();
     }
-  }
 
-  async showSurveyData(){
-    await Haptics.vibrate();
+    async takePicture() {
+      this.photoservice.takePicture();
+    }
 
-    $.ajax({
-      url: `https://surveyug.azurewebsites.net/courses/${this.surveyCode == 253435? 1: 2}`
-    }).done((respose: SurveyDataDTO) => {
-      this.surveyData = {
-        University: respose.university,
-        Discipline: respose.field,
-        Semester: respose.sem,
-        Instructor: respose.professor,
-        Subject: respose.lecture,
-        LessonType: respose.type,
-        Group: respose.group
-      }
-    }).fail((xhr, status, message) => {
-      alert(message)
-    })
 
-  // npm install jquery --save
-  // npm i --save-dev @types/jquery
-
-  // import * as $ from "jquery";
-  }
+ 
 }
 
 interface SurveyData {

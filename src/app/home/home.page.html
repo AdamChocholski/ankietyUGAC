@@ -32,7 +32,7 @@
           </ion-row>
           <ion-row>
             <ion-col> 
-              <ion-button (click)="showSurveyData()" expand="block" shape="round" color="primary">
+              <ion-button expand="block" shape="round" color="primary">
               <ion-icon slot="start" name="search"></ion-icon>
               Raporty
             </ion-button>
@@ -73,7 +73,7 @@
           </ion-row>
           <ion-row class="justify-content-center">
             <ion-col>
-              <ion-button>Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
+              <ion-button (click)="takePicture">Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
             </ion-col>
             <ion-col>
               <ion-button>Dodaj<ion-icon name="send"></ion-icon></ion-button>
