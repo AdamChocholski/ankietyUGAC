@@ -103,10 +103,10 @@ export class HomePage {
       alert(message)
     })
 
-  // npm install jquery --save
-  // npm i --save-dev @types/jquery
+  }
 
-  // import * as $ from "jquery";
+  async takePicture() {
+    this.photoservice.takePicture();
   }
  
 }
