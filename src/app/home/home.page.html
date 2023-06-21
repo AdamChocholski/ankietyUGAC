@@ -14,7 +14,7 @@
   </ion-header>
 
   <div id="container">
-    <ion-slides #sliderAnkieta (ionSlideWillChange)="beforeSlideChange()"  pager="false">
+    <ion-slides #sliderAnkieta   pager="false">
       <ion-slide style="display: block;">
         <ion-grid>
           <ion-row>
@@ -43,30 +43,34 @@
 
       <ion-slide style="display: block;">
         <ion-grid>
+          
+          <ion-row>
+            <ion-col>
+              <ion-img src="/assets/lygo.png" style="height: 100px;"></ion-img>
+            </ion-col>
+          </ion-row>
           <ion-row>
             <ion-col>
               <ion-icon (click)="moveToPreviousSlide()" name="arrow-back-circle-outline" size="large"></ion-icon>
-            </ion-col>
-            <ion-col>
-              <ion-img src="/assets/lygo.png" style="height: 100px;"></ion-img>
             </ion-col>
           </ion-row>
           <ion-row class="justify-content-center">
             <ion-col size="12">
               <ion-item>
                 <ion-label position="floating">Numer paczki</ion-label>
+                <ion-input type="text" [(ngModel)]="NumerPaczki"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Informacje Podstawowe</ion-label>
+                <ion-input type="text" [(ngModel)]="PaczkaPodstawowe" placeholder="Max 140 znaków"></ion-input>
+                
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Informacje Dodatkowe</ion-label>
                 <ion-textarea placeholder="Max 140 znaków"></ion-textarea>
               </ion-item>
               <ion-item>
-                <ion-label position="floating">Info 1</ion-label>
-                <ion-textarea placeholder="Max 140 znaków"></ion-textarea>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating">Info 2</ion-label>
-                <ion-textarea placeholder="Max 140 znaków"></ion-textarea>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating">Info 3</ion-label>
+                <ion-label position="floating">Informacje o Uszkodzeniach</ion-label>
                 <ion-textarea placeholder="Max 140 znaków"></ion-textarea>
               </ion-item>
             </ion-col>      
@@ -76,7 +80,7 @@
               <ion-button (click)="takePicture">Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
             </ion-col>
             <ion-col>
-              <ion-button>Dodaj<ion-icon name="send"></ion-icon></ion-button>
+              <ion-button (click)="przydodaniukod(); przydodaniuinfo()">Dodaj</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>

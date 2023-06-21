@@ -12,7 +12,13 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
 })
 export class HomePage {
   @ViewChild("sliderAnkieta") sliderAnkieta!: IonSlides;
-  surveyCode: number = 100000;
+  paczkaInfo: PaczkaInfo ={
+    infopodst: "",
+    infododatkowe: "",
+    infoUszkodzenia: "",
+  }
+  PaczkaPodstawowe: string = "";
+  NumerPaczki: number = 0;
   surveyData: SurveyData = {
     University: "",
     Discipline: "",
@@ -37,8 +43,8 @@ export class HomePage {
 
   async ngOnInit() {
       const toast = await this.toastController.create({
-        message: 'Proszę wypełnić sumiennie ankietę!',
-        duration: 3000,
+        message: 'Witamy w CubbyMate!',
+        duration: 4000,
         position: 'bottom',
         
       });
@@ -119,6 +125,12 @@ interface SurveyData {
   Subject: string;
   LessonType: string;
   Group: string;
+}
+interface PaczkaInfo{
+  infopodst: string;
+  infododatkowe: string;
+  infoUszkodzenia: string;
+
 }
 
 interface SurveyDataDTO {
