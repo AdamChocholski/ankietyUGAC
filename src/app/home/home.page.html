@@ -10,15 +10,19 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">CubbyMate</ion-title>
+     
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div [ngClass]="{'dark-mode': isDarkMode, 'light-mode': !isDarkMode}">
     <ion-slides #sliderAnkieta   pager="false">
       <ion-slide style="display: block;">
         <ion-grid>
-          <ion-row>
-            <ion-col >
+          <ion-row> 
+           
+            <ion-col > <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleDarkMode()">
+        <ion-icon slot="start" [ngClass]="{'moon': isDarkMode, 'sunny': !isDarkMode}"></ion-icon>
+      </ion-toggle>
               <ion-img src="/assets/lygo.png" style="height: 100px;"></ion-img>
             </ion-col>
           </ion-row>
@@ -77,7 +81,7 @@
           </ion-row>
           <ion-row class="justify-content-center">
             <ion-col>
-              <ion-button (click)="takePicture">Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
+              <ion-button (click)="takePicture()">Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
             </ion-col>
             <ion-col>
               <ion-button (click)="przydodaniukod(); przydodaniuinfo()">Dodaj</ion-button>

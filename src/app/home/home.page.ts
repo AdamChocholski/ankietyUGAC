@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ToastController, IonSlides, AlertController  } from '@ionic/angular';
 import * as $ from "jquery";
-import { PhotoService } from '../services/photo.service';
-
+import { Camera, CameraResultType } from '@capacitor/camera';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
@@ -19,9 +18,10 @@ export class HomePage {
   }
   PaczkaPodstawowe: string = "";
   NumerPaczki: number = 0;
+isDarkMode = false;
 
 
-  constructor(private toastController: ToastController, private alertController: AlertController, public photoservice: PhotoService) {}
+  constructor(private toastController: ToastController, private alertController: AlertController) {}
 
   async ngOnInit() {
       const toast = await this.toastController.create({
@@ -73,8 +73,30 @@ export class HomePage {
   }
 
   async takePicture() {
-    this.photoservice.takePicture();
+    const image = await Camera.getPhoto({
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.Base64
+    });
+    var img = document.getElementById('myImage') as HTMLImageElement;
+    img.src = "data:image/png;base64," + image.base64String;
   }
+
+  toggleDarkMode() {
+    Haptics.impact({ style: ImpactStyle.Light });
+    if (this.isDarkMode) {
+      
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark');
+    console.log(this.isDarkMode);
+    } else {
+    
+      document.body.classList.toggle('light');
+      console.log(this.isDarkMode);
+    }
+    
+  }
+  
  
 }
 

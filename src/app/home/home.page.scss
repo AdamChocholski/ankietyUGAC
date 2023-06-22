@@ -30,3 +30,17 @@
 .button{ 
   --opacity:1;	
 }
+
+.button:disabled{ 
+  --opacity:0.5;	
+}
+
+body .dark {
+  background-color: #000000 !important;
+  --ion-text-color: #ffffff !important;
+}
+
+.light-mode {
+  --ion-background-color: #ffffff !important;
+  --ion-text-color: #000000 !important;
+}
