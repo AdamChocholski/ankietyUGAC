@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ToastController, IonSlides, AlertController  } from '@ionic/angular';
 import * as $ from "jquery";
-import { PhotoService } from '../services/photo.service';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
@@ -11,7 +11,7 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  @ViewChild("sliderAnkieta") sliderAnkieta!: IonSlides;
+  @ViewChild("sliderReport") sliderReport!: IonSlides;
   paczkaInfo: PaczkaInfo ={
     infopodst: "",
     infododatkowe: "",
@@ -21,7 +21,7 @@ export class HomePage {
   NumerPaczki: number = 0;
 
 
-  constructor(private toastController: ToastController, private alertController: AlertController, public photoservice: PhotoService) {}
+  constructor(private toastController: ToastController, private alertController: AlertController) {}
 
   async ngOnInit() {
       const toast = await this.toastController.create({
@@ -35,17 +35,17 @@ export class HomePage {
   }
 
   moveToNextSlide() {
-    this.sliderAnkieta.slideNext();
+    this.sliderReport.slideNext();
   }
 
   moveToPreviousSlide(){
-    this.sliderAnkieta.slidePrev();
+    this.sliderReport.slidePrev();
   }
 
   async przydodaniukod() {
     if (this.NumerPaczki == null || this.NumerPaczki > 100000 || this.NumerPaczki ==0 ) {
       Haptics.vibrate();
-      this.sliderAnkieta.slideTo(1);
+      this.sliderReport.slideTo(0);
       
       const alert = await this.alertController.create({
         header: 'Błędny kod Paczki',
@@ -59,7 +59,7 @@ export class HomePage {
   async przydodaniuinfo() {
     if (this.PaczkaPodstawowe.length == 0) {
       Haptics.vibrate();
-      this.sliderAnkieta.slideTo(1);
+      this.sliderReport.slideTo(0);
       
       
       const alert = await this.alertController.create({
@@ -71,9 +71,18 @@ export class HomePage {
       await alert.present();
     }
   }
+  async goToFirstSlide() {
+    this.sliderReport.slideTo(0);
+  }
 
   async takePicture() {
-    this.photoservice.takePicture();
+    const image = await Camera.getPhoto({
+      quality: 100,
+      allowEditing: true,
+      resultType: CameraResultType.Base64
+    });
+    var imageBase64 = 'data:image/jpeg;base64,' + image.base64String;
+
   }
  
 }

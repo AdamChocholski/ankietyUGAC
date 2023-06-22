@@ -80,7 +80,53 @@
               <ion-button (click)="takePicture">Zdjęcie<ion-icon name="image-outline"></ion-icon></ion-button>
             </ion-col>
             <ion-col>
-              <ion-button (click)="przydodaniukod(); przydodaniuinfo()">Dodaj</ion-button>
+              <ion-button (click)="przydodaniukod(); przydodaniuinfo(); moveToPreviousSlide()">Dodaj</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+
+      <ion-slide style="display: block;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-img src="/assets/lygo.png" style="height: 100px;"></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-icon (click)="moveToPreviousSlide()" name="arrow-back-circle-outline" size="large"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row class="justify-content-center">
+            <ion-col size="12">
+<!-- list reports -->
+              <ion-list>
+                <ion-item>
+                <ion-label>Numer paczki</ion-label>
+                2000
+              </ion-item>
+              <ion-item>
+                <ion-label>Informacje Podstawowe</ion-label>
+                Paczka w dobrym stanie
+              </ion-item>
+              <ion-item>
+                <ion-label>Informacje Dodatkowe</ion-label>
+                Brak śladów uszkodzeń, paczka niezniszczona, brak wilgoci
+              </ion-item>
+              <ion-item>
+                <ion-label>Informacje o Uszkodzeniach</ion-label>
+                Brak
+              </ion-item>
+              </ion-list>
+            </ion-col>      
+          </ion-row>
+          <ion-row class="justify-content-center">
+            <ion-col><ion-button (click)="przydodaniukod(); przydodaniuinfo(); moveToPreviousSlide()">Dodaj</ion-button>
+            </ion-col>
+            <ion-col >
+              
+              <ion-button (click)="przydodaniukod(); przydodaniuinfo(); goToFirstSlide()">Wróć</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
